@@ -7,7 +7,7 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <Link href="/" className="font-display text-xl font-bold">
-            <span className="gradient-text">DevPortfolio</span>
+            <span className="gradient-text">José Posadas</span>
           </Link>
           <div className="flex gap-8 text-sm">
             <a href="#about" className="hover:text-blue-400 transition-colors">Sobre mí</a>
@@ -30,13 +30,13 @@ export default function Home() {
             Hola, soy
           </p>
           <h1 className="font-display text-5xl md:text-7xl font-bold mb-6 opacity-0 animate-fade-in-up delay-100">
-            <span className="gradient-text">Tu Nombre</span>
+            <span className="gradient-text">José Posadas</span>
           </h1>
           <p className="text-xl md:text-2xl text-slate-400 mb-8 opacity-0 animate-fade-in-up delay-200">
             Desarrollador Full Stack & Creador de soluciones digitales
           </p>
           <p className="text-slate-500 max-w-2xl mx-auto mb-10 opacity-0 animate-fade-in-up delay-300">
-            Construyo aplicaciones web modernas, elegantes y funcionales. 
+            Construyo aplicaciones web modernas y sistemas automatizados para resolver problemas diarios de empresas. 
             Apasionado por transformar ideas en realidad a través del código.
           </p>
           <div className="flex gap-4 justify-center opacity-0 animate-fade-in-up delay-400">
@@ -65,7 +65,8 @@ export default function Home() {
           </h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 p-1 glow">
-              <div className="w-full h-full bg-slate-900 rounded-2xl flex items-center justify-center">
+              <div className="w-full h-full bg-slate-900 rounded-2xl flex items-center justify-center overflow-hidden">
+                {/* TODO: Añadir tu foto en public/foto-perfil.jpg y usar Next.js Image */}
                 <span className="text-6xl">👨‍💻</span>
               </div>
             </div>
@@ -74,9 +75,9 @@ export default function Home() {
                 Desarrollador apasionado por crear soluciones innovadoras
               </h3>
               <p className="text-slate-400 mb-6 leading-relaxed">
-                Soy un desarrollador con experiencia en el diseño y desarrollo de aplicaciones web modernas. 
-                Me especializo en crear experiencias de usuario intuitivas y funcionales utilizando las 
-                tecnologías más actuales del ecosistema JavaScript.
+                Soy un desarrollador con 2 años de experiencia en el diseño y desarrollo de aplicaciones web modernas 
+                y sistemas automatizados para empresas. Me especializo en crear experiencias de usuario intuitivas 
+                y funcionales, así como en optimizar procesos empresariales a través de la automatización.
               </p>
               <p className="text-slate-400 mb-6 leading-relaxed">
                 Cuando no estoy codificando, me puedes encontrar explorando nuevas tecnologías, 
@@ -84,11 +85,11 @@ export default function Home() {
               </p>
               <div className="flex gap-4">
                 <div className="text-center">
-                  <div className="text-2xl font-bold gradient-text">5+</div>
+                  <div className="text-2xl font-bold gradient-text">2+</div>
                   <div className="text-xs text-slate-500">Años de experiencia</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold gradient-text">20+</div>
+                  <div className="text-2xl font-bold gradient-text">10</div>
                   <div className="text-xs text-slate-500">Proyectos completados</div>
                 </div>
                 <div className="text-center">
@@ -124,7 +125,7 @@ export default function Home() {
           <div className="mb-10">
             <h3 className="text-lg font-semibold mb-4 text-slate-300">Backend</h3>
             <div className="flex flex-wrap gap-3">
-              {["Node.js", "Python", "PostgreSQL", "MongoDB", "REST APIs", "GraphQL"].map((skill) => (
+              {["Node.js", "Python", "PostgreSQL", "REST APIs", "Automatización", "SQL"].map((skill) => (
                 <span key={skill} className="px-4 py-2 bg-slate-800 border border-slate-700 rounded-full text-sm hover:border-purple-500 transition-colors cursor-default">
                   {skill}
                 </span>
@@ -334,27 +335,27 @@ export default function Home() {
           </p>
           
           <div className="flex flex-wrap justify-center gap-6 mb-12">
-            <a href="mailto:tuemail@ejemplo.com" className="flex items-center gap-3 px-6 py-4 bg-slate-800 border border-slate-700 rounded-xl hover:border-blue-500 transition-all group">
+            <a href="mailto:posadasjosep8@gmail.com" className="flex items-center gap-3 px-6 py-4 bg-slate-800 border border-slate-700 rounded-xl hover:border-blue-500 transition-all group">
               <span className="text-2xl">✉️</span>
               <div className="text-left">
                 <div className="text-xs text-slate-500">Email</div>
-                <div className="text-sm group-hover:text-blue-400 transition-colors">tuemail@ejemplo.com</div>
+                <div className="text-sm group-hover:text-blue-400 transition-colors">posadasjosep8@gmail.com</div>
               </div>
             </a>
             
-            <a href="https://github.com/tuusuario" target="_blank" className="flex items-center gap-3 px-6 py-4 bg-slate-800 border border-slate-700 rounded-xl hover:border-purple-500 transition-all group">
+            <a href="https://github.com/ESPACEX88" target="_blank" className="flex items-center gap-3 px-6 py-4 bg-slate-800 border border-slate-700 rounded-xl hover:border-purple-500 transition-all group">
               <span className="text-2xl">🐙</span>
               <div className="text-left">
                 <div className="text-xs text-slate-500">GitHub</div>
-                <div className="text-sm group-hover:text-purple-400 transition-colors">@tuusuario</div>
+                <div className="text-sm group-hover:text-purple-400 transition-colors">@ESPACEX88</div>
               </div>
             </a>
             
-            <a href="https://linkedin.com/in/tuusuario" target="_blank" className="flex items-center gap-3 px-6 py-4 bg-slate-800 border border-slate-700 rounded-xl hover:border-blue-600 transition-all group">
+            <a href="https://linkedin.com/in/josé-posadas" target="_blank" className="flex items-center gap-3 px-6 py-4 bg-slate-800 border border-slate-700 rounded-xl hover:border-blue-600 transition-all group">
               <span className="text-2xl">💼</span>
               <div className="text-left">
                 <div className="text-xs text-slate-500">LinkedIn</div>
-                <div className="text-sm group-hover:text-blue-400 transition-colors">/in/tuusuario</div>
+                <div className="text-sm group-hover:text-blue-400 transition-colors">/in/José Posadas</div>
               </div>
             </a>
           </div>
@@ -386,7 +387,7 @@ export default function Home() {
       <footer className="py-8 px-6 border-t border-slate-800">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-500 text-sm">
-            © 2026 Tu Nombre. Todos los derechos reservados.
+            © 2026 José Posadas. Todos los derechos reservados.
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-slate-500 hover:text-white transition-colors">GitHub</a>
