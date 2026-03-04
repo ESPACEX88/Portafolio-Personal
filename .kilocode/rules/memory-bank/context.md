@@ -1,10 +1,10 @@
-# Active Context: Next.js Starter Template
+# Active Context: Portafolio Personal
 
 ## Current State
 
-**Template Status**: ✅ Ready for development
+**Project Status**: ✅ Portafolio personal creado
 
-The template is a clean Next.js 16 starter with TypeScript and Tailwind CSS 4. It's ready for AI-assisted expansion to build any type of application.
+El proyecto ahora es un portafolio personal completo con diseño moderno oscuro, listo para que el usuario personalice.
 
 ## Recently Completed
 
@@ -14,23 +14,26 @@ The template is a clean Next.js 16 starter with TypeScript and Tailwind CSS 4. I
 - [x] ESLint configuration
 - [x] Memory bank documentation
 - [x] Recipe system for common features
+- [x] **Portafolio personal completo creado** con secciones de Hero, Sobre mí, Habilidades, Proyectos y Contacto
 
 ## Current Structure
 
 | File/Directory | Purpose | Status |
 |----------------|---------|--------|
-| `src/app/page.tsx` | Home page | ✅ Ready |
-| `src/app/layout.tsx` | Root layout | ✅ Ready |
-| `src/app/globals.css` | Global styles | ✅ Ready |
-| `.kilocode/` | AI context & recipes | ✅ Ready |
+| `src/app/page.tsx` | Portafolio principal | ✅ Completado |
+| `src/app/layout.tsx` | Root layout + fuentes | ✅ Actualizado |
+| `src/app/globals.css` | Estilos + animaciones | ✅ Actualizado |
+| `.kilocode/` | AI context & recipes | ✅ Listo |
 
-## Current Focus
+## Enfoque Actual
 
-The template is ready. Next steps depend on user requirements:
+El portafolio está listo para personalización. El usuario debe:
 
-1. What type of application to build
-2. What features are needed
-3. Design/branding preferences
+1. Cambiar "Tu Nombre" por su nombre real
+2. Actualizar la descripción en la sección Sobre mí
+3. Personalizar las habilidades tecnologías
+4. Reemplazar los proyectos de ejemplo con los reales
+5. Agregar sus enlaces de contacto reales
 
 ## Quick Start Guide
 
@@ -85,3 +88,4 @@ export async function GET() {
 | Date | Changes |
 |------|---------|
 | Initial | Template created with base setup |
+| 2026-03-04 | Portafolio personal completo creado con todas las secciones |
