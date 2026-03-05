@@ -360,20 +360,26 @@ export default function Home() {
             </a>
           </div>
           
-          <form className="max-w-md mx-auto space-y-4">
+          <form action="https://formspree.io/f/TU_FORM_ID" method="POST" className="max-w-md mx-auto space-y-4">
             <input 
               type="text" 
+              name="name"
               placeholder="Tu nombre" 
+              required
               className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
             />
             <input 
               type="email" 
+              name="email"
               placeholder="Tu email" 
+              required
               className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:border-blue-500 focus:outline-none transition-colors"
             />
             <textarea 
+              name="message"
               placeholder="Tu mensaje" 
               rows={4}
+              required
               className="w-full px-4 py-3 bg-slate-800 border border-slate-700 rounded-lg focus:border-blue-500 focus:outline-none transition-colors resize-none"
             />
             <button type="submit" className="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-lg font-medium transition-all hover:scale-[1.02]">
