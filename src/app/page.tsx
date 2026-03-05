@@ -360,7 +360,7 @@ export default function Home() {
             </a>
           </div>
           
-          <form action="https://formspree.io/f/TU_FORM_ID" method="POST" className="max-w-md mx-auto space-y-4">
+          <form action="https://formspree.io/f/xkoqwgvp" method="POST" className="max-w-md mx-auto space-y-4">
             <input 
               type="text" 
               name="name"
