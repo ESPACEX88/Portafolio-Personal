@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ContactForm } from "@/components/ContactForm";
 
 export default function Home() {
@@ -66,9 +67,13 @@ export default function Home() {
           </h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 p-1 glow">
-              <div className="w-full h-full bg-slate-900 rounded-2xl flex items-center justify-center overflow-hidden">
-                {/* TODO: Añadir tu foto en public/foto-perfil.jpg y usar Next.js Image */}
-                <span className="text-6xl">👨‍💻</span>
+              <div className="w-full h-full bg-slate-900 rounded-2xl overflow-hidden relative">
+                <Image 
+                  src="/foto-perfil.jpg" 
+                  alt="Foto de perfil de José Posadas"
+                  fill
+                  className="object-cover"
+                />
               </div>
             </div>
             <div>
