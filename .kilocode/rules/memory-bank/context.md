@@ -24,6 +24,7 @@
   - Quitado MongoDB y GraphQL de habilidades
   - Añadido "Automatización" y "SQL" en habilidades
   - Descripción actualizada con sistemas automatizados para empresas
+- [x] Imagen de perfil preparada para sección Sobre mí (agregar foto-perfil.jpg en public/)
 
 ## Current Structure
 
