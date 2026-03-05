@@ -12,7 +12,8 @@
 - [x] ESLint configuration
 - [x] Memory bank documentation
 - [x] Recipe system for common features
-- [x] **Portafolio personalizado completado** con:
+- [x] **Formulario de contacto con AJAX**: Envía sin redirigir, muestra mensajes inline
+- [x] Portafolio personalizado completado con:
   - Nombre: José Posadas
   - Experiencia: 2 años
   - Proyectos: 10 completados
@@ -97,3 +98,4 @@ export async function GET() {
 |------|---------|
 | Initial | Template created with base setup |
 | 2026-03-04 | Portafolio personal completo creado con todas las secciones |
+| 2026-03-05 | Formulario AJAX con mensajes inline (sin redirección) |
