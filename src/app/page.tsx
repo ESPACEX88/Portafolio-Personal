@@ -1,106 +1,98 @@
+import type { ReactNode } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { ContactForm } from "@/components/ContactForm";
+import { ProfileAvatar } from "@/components/ProfileAvatar";
+import { ProjectCover } from "@/components/ProjectCover";
+import { getPublishedProjects } from "@/lib/projects";
+import { profile } from "@/lib/profile";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+const frontend = ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js", "HTML/CSS", "JavaScript"];
+const backend = ["Node.js", "Python", "PostgreSQL", "REST APIs", "Automatización", "SQL"];
+const tools = ["Git", "GitHub", "Docker", "VS Code", "Figma", "AWS", "Linux"];
+
+export default async function Home() {
+  const projects = await getPublishedProjects();
+
   return (
     <main className="min-h-screen">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="font-display text-xl font-bold">
-            <span className="gradient-text">José Posadas</span>
+      <nav className="fixed top-0 right-0 left-0 z-50 border-b border-slate-800 bg-slate-950/80 backdrop-blur-md">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-6 py-3">
+          <Link href="/" className="font-display text-lg font-bold sm:text-xl">
+            <span className="gradient-text">{profile.name}</span>
           </Link>
-          <div className="flex gap-8 text-sm">
-            <a href="#about" className="hover:text-blue-400 transition-colors">Sobre mí</a>
-            <a href="#skills" className="hover:text-blue-400 transition-colors">Habilidades</a>
-            <a href="#projects" className="hover:text-blue-400 transition-colors">Proyectos</a>
-            <a href="#contact" className="hover:text-blue-400 transition-colors">Contacto</a>
+          <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm sm:gap-x-8">
+            <a href="#about" className="transition-colors hover:text-blue-400">Sobre mí</a>
+            <a href="#skills" className="transition-colors hover:text-blue-400">Habilidades</a>
+            <a href="#projects" className="transition-colors hover:text-blue-400">Proyectos</a>
+            <a href="#contact" className="transition-colors hover:text-blue-400">Contacto</a>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-950/20 via-slate-950 to-slate-950" />
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-        
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <p className="text-blue-400 text-sm tracking-widest mb-4 uppercase opacity-0 animate-fade-in-up">
+      <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20">
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-950/30 via-slate-950 to-slate-950" />
+        <div className="absolute top-1/4 left-1/4 h-80 w-80 rounded-full bg-blue-500/10 blur-3xl" />
+        <div className="absolute right-1/4 bottom-1/4 h-80 w-80 rounded-full bg-violet-500/10 blur-3xl" />
+
+        <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
+          <p className="mb-4 text-sm tracking-[0.25em] text-blue-400 uppercase opacity-0 animate-fade-in-up">
             Hola, soy
           </p>
-          <h1 className="font-display text-5xl md:text-7xl font-bold mb-6 opacity-0 animate-fade-in-up delay-100">
-            <span className="gradient-text">José Posadas</span>
+          <h1 className="mb-6 font-display text-5xl font-bold opacity-0 animate-fade-in-up delay-100 md:text-7xl">
+            <span className="gradient-text">{profile.name}</span>
           </h1>
-          <p className="text-xl md:text-2xl text-slate-400 mb-8 opacity-0 animate-fade-in-up delay-200">
-            Desarrollador Full Stack & Creador de soluciones digitales
+          <p className="mb-6 text-xl text-slate-300 opacity-0 animate-fade-in-up delay-200 md:text-2xl">
+            Desarrollador full stack y creador de soluciones digitales
           </p>
-          <p className="text-slate-500 max-w-2xl mx-auto mb-10 opacity-0 animate-fade-in-up delay-300">
-            Construyo aplicaciones web modernas y sistemas automatizados para resolver problemas diarios de empresas. 
+          <p className="mx-auto mb-10 max-w-2xl text-slate-400 opacity-0 animate-fade-in-up delay-300">
+            Construyo aplicaciones web modernas y sistemas automatizados para resolver problemas diarios de empresas.
             Apasionado por transformar ideas en realidad a través del código.
           </p>
-          <div className="flex gap-4 justify-center opacity-0 animate-fade-in-up delay-400">
-            <a href="#projects" className="px-8 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-full font-medium transition-all hover:scale-105">
-              Ver Proyectos
+          <div className="flex justify-center gap-3 opacity-0 animate-fade-in-up delay-400">
+            <a href="#projects" className="rounded-full bg-blue-600 px-7 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-500">
+              Ver proyectos
             </a>
-            <a href="#contact" className="px-8 py-3 border border-slate-700 hover:border-blue-400 text-slate-300 hover:text-white rounded-full font-medium transition-all">
+            <a href="#contact" className="rounded-full border border-slate-700 px-7 py-3 text-sm font-medium text-slate-300 transition-colors hover:border-blue-400 hover:text-white">
               Contactar
             </a>
           </div>
         </div>
-        
-        {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-float">
-          <div className="w-6 h-10 border-2 border-slate-600 rounded-full flex justify-center pt-2">
-            <div className="w-1 h-2 bg-slate-500 rounded-full" />
-          </div>
-        </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-24 px-6">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-12 text-center">
-            <span className="gradient-text">Sobre Mí</span>
+      <section id="about" className="px-6 py-20">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-10 text-center font-display text-3xl font-bold md:text-4xl">
+            <span className="gradient-text">Sobre mí</span>
           </h2>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-600 to-purple-600 p-1 glow">
-              <div className="w-full h-full bg-slate-900 rounded-2xl overflow-hidden relative">
-                <Image 
-                  src="/foto-perfil.jpg" 
-                  alt="Foto de perfil de José Posadas"
-                  fill
-                  className="object-cover"
-                />
+          <div className="grid items-center gap-10 md:grid-cols-2">
+            <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-600 to-violet-600 p-1 glow">
+              <div className="relative h-full w-full overflow-hidden rounded-2xl bg-slate-900">
+                <ProfileAvatar />
               </div>
             </div>
             <div>
-              <h3 className="text-xl font-semibold mb-4 text-white">
+              <h3 className="mb-4 text-xl font-semibold text-white">
                 Desarrollador apasionado por crear soluciones innovadoras
               </h3>
-              <p className="text-slate-400 mb-6 leading-relaxed">
-                Soy un desarrollador con 2 años de experiencia en el diseño y desarrollo de aplicaciones web modernas 
-                y sistemas automatizados para empresas. Me especializo en crear experiencias de usuario intuitivas 
+              <p className="mb-4 leading-relaxed text-slate-400">
+                Soy un desarrollador con 2 años de experiencia en el diseño y desarrollo de aplicaciones web modernas
+                y sistemas automatizados para empresas. Me especializo en crear experiencias de usuario intuitivas
                 y funcionales, así como en optimizar procesos empresariales a través de la automatización.
               </p>
-              <p className="text-slate-400 mb-6 leading-relaxed">
-                Cuando no estoy codificando, me puedes encontrar explorando nuevas tecnologías, 
+              <p className="mb-6 leading-relaxed text-slate-400">
+                Cuando no estoy codificando, me puedes encontrar explorando nuevas tecnologías,
                 contribuyendo a proyectos de código abierto, o compartiendo conocimiento con la comunidad.
               </p>
-              <div className="flex gap-4">
-                <div className="text-center">
+              <div className="flex gap-8">
+                <div>
                   <div className="text-2xl font-bold gradient-text">2+</div>
                   <div className="text-xs text-slate-500">Años de experiencia</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold gradient-text">10</div>
-                  <div className="text-xs text-slate-500">Proyectos completados</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold gradient-text">10+</div>
-                  <div className="text-xs text-slate-500">Clientes satisfechos</div>
+                <div>
+                  <div className="text-2xl font-bold gradient-text">{projects.length}</div>
+                  <div className="text-xs text-slate-500">Proyectos en este sitio</div>
                 </div>
               </div>
             </div>
@@ -108,281 +100,180 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="py-24 px-6 bg-slate-900/50">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-12 text-center">
+      <section id="skills" className="bg-slate-900/50 px-6 py-20">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-10 text-center font-display text-3xl font-bold md:text-4xl">
             <span className="gradient-text">Habilidades</span>
           </h2>
-          
-          {/* Frontend */}
-          <div className="mb-10">
-            <h3 className="text-lg font-semibold mb-4 text-slate-300">Frontend</h3>
-            <div className="flex flex-wrap gap-3">
-              {["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js", "HTML/CSS", "JavaScript"].map((skill) => (
-                <span key={skill} className="px-4 py-2 bg-slate-800 border border-slate-700 rounded-full text-sm hover:border-blue-500 transition-colors cursor-default">
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-          
-          {/* Backend */}
-          <div className="mb-10">
-            <h3 className="text-lg font-semibold mb-4 text-slate-300">Backend</h3>
-            <div className="flex flex-wrap gap-3">
-              {["Node.js", "Python", "PostgreSQL", "REST APIs", "Automatización", "SQL"].map((skill) => (
-                <span key={skill} className="px-4 py-2 bg-slate-800 border border-slate-700 rounded-full text-sm hover:border-purple-500 transition-colors cursor-default">
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-          
-          {/* Tools */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-slate-300">Herramientas</h3>
-            <div className="flex flex-wrap gap-3">
-              {["Git", "GitHub", "Docker", "VS Code", "Figma", "AWS", "Linux"].map((skill) => (
-                <span key={skill} className="px-4 py-2 bg-slate-800 border border-slate-700 rounded-full text-sm hover:border-pink-500 transition-colors cursor-default">
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
+          <SkillGroup title="Frontend" skills={frontend} hover="hover:border-blue-500" />
+          <SkillGroup title="Backend" skills={backend} hover="hover:border-violet-500" />
+          <SkillGroup title="Herramientas" skills={tools} hover="hover:border-pink-500" />
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4 text-center">
-            <span className="gradient-text">Mis Proyectos</span>
+      <section id="projects" className="px-6 py-20">
+        <div className="mx-auto max-w-6xl">
+          <h2 className="mb-3 text-center font-display text-3xl font-bold md:text-4xl">
+            <span className="gradient-text">Proyectos</span>
           </h2>
-          <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
-            Una selección de proyectos en los que he trabajado recientemente
+          <p className="mx-auto mb-10 max-w-2xl text-center text-slate-400">
+            Trabajo real, con repositorio y demo cuando existe una URL pública.
           </p>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Project 1 */}
-            <article className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden card-hover">
-              <div className="h-48 bg-gradient-to-br from-blue-600/20 to-purple-600/20 flex items-center justify-center">
-                <span className="text-4xl">🚀</span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">E-commerce Platform</h3>
-                <p className="text-slate-400 text-sm mb-4">
-                  Plataforma de comercio electrónico completa con carrito de compras, 
-                  pasarela de pagos y panel de administración.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="text-xs px-2 py-1 bg-blue-600/20 text-blue-400 rounded">React</span>
-                  <span className="text-xs px-2 py-1 bg-green-600/20 text-green-400 rounded">Node.js</span>
-                  <span className="text-xs px-2 py-1 bg-purple-600/20 text-purple-400 rounded">MongoDB</span>
-                </div>
-                <div className="flex gap-4">
-                  <a href="#" className="text-sm text-blue-400 hover:text-blue-300 transition-colors">
-                    Ver Demo →
-                  </a>
-                  <a href="#" className="text-sm text-slate-400 hover:text-white transition-colors">
-                    GitHub →
-                  </a>
-                </div>
-              </div>
-            </article>
 
-            {/* Project 2 */}
-            <article className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden card-hover">
-              <div className="h-48 bg-gradient-to-br from-green-600/20 to-teal-600/20 flex items-center justify-center">
-                <span className="text-4xl">📊</span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Dashboard Analytics</h3>
-                <p className="text-slate-400 text-sm mb-4">
-                  Panel de análisis con visualizaciones en tiempo real, 
-                  gráficos interactivos y exportación de datos.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="text-xs px-2 py-1 bg-blue-600/20 text-blue-400 rounded">Next.js</span>
-                  <span className="text-xs px-2 py-1 bg-yellow-600/20 text-yellow-400 rounded">TypeScript</span>
-                  <span className="text-xs px-2 py-1 bg-pink-600/20 text-pink-400 rounded">Chart.js</span>
-                </div>
-                <div className="flex gap-4">
-                  <a href="#" className="text-sm text-blue-400 hover:text-blue-300 transition-colors">
-                    Ver Demo →
-                  </a>
-                  <a href="#" className="text-sm text-slate-400 hover:text-white transition-colors">
-                    GitHub →
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            {/* Project 3 */}
-            <article className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden card-hover">
-              <div className="h-48 bg-gradient-to-br from-orange-600/20 to-red-600/20 flex items-center justify-center">
-                <span className="text-4xl">💬</span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Chat Application</h3>
-                <p className="text-slate-400 text-sm mb-4">
-                  Aplicación de mensajería en tiempo real con salas privadas, 
-                  emojis y notificaciones push.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="text-xs px-2 py-1 bg-blue-600/20 text-blue-400 rounded">React</span>
-                  <span className="text-xs px-2 py-1 bg-cyan-600/20 text-cyan-400 rounded">Socket.io</span>
-                  <span className="text-xs px-2 py-1 bg-green-600/20 text-green-400 rounded">Express</span>
-                </div>
-                <div className="flex gap-4">
-                  <a href="#" className="text-sm text-blue-400 hover:text-blue-300 transition-colors">
-                    Ver Demo →
-                  </a>
-                  <a href="#" className="text-sm text-slate-400 hover:text-white transition-colors">
-                    GitHub →
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            {/* Project 4 */}
-            <article className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden card-hover">
-              <div className="h-48 bg-gradient-to-br from-purple-600/20 to-pink-600/20 flex items-center justify-center">
-                <span className="text-4xl">🎯</span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Task Manager</h3>
-                <p className="text-slate-400 text-sm mb-4">
-                  Aplicación de gestión de tareas con arrastrar y soltar, 
-                  colaboración en equipo yrecordatorios.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="text-xs px-2 py-1 bg-blue-600/20 text-blue-400 rounded">Vue.js</span>
-                  <span className="text-xs px-2 py-1 bg-green-600/20 text-green-400 rounded">Firebase</span>
-                  <span className="text-xs px-2 py-1 bg-purple-600/20 text-purple-400 rounded">Tailwind</span>
-                </div>
-                <div className="flex gap-4">
-                  <a href="#" className="text-sm text-blue-400 hover:text-blue-300 transition-colors">
-                    Ver Demo →
-                  </a>
-                  <a href="#" className="text-sm text-slate-400 hover:text-white transition-colors">
-                    GitHub →
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            {/* Project 5 */}
-            <article className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden card-hover">
-              <div className="h-48 bg-gradient-to-br from-cyan-600/20 to-blue-600/20 flex items-center justify-center">
-                <span className="text-4xl">🌐</span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Portfolio CMS</h3>
-                <p className="text-slate-400 text-sm mb-4">
-                  Sistema de gestión de contenido para portafolios personales 
-                  con editor visual y hosting integrado.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="text-xs px-2 py-1 bg-blue-600/20 text-blue-400 rounded">Next.js</span>
-                  <span className="text-xs px-2 py-1 bg-green-600/20 text-green-400 rounded">PostgreSQL</span>
-                  <span className="text-xs px-2 py-1 bg-yellow-600/20 text-yellow-400 rounded">Prisma</span>
-                </div>
-                <div className="flex gap-4">
-                  <a href="#" className="text-sm text-blue-400 hover:text-blue-300 transition-colors">
-                    Ver Demo →
-                  </a>
-                  <a href="#" className="text-sm text-slate-400 hover:text-white transition-colors">
-                    GitHub →
-                  </a>
-                </div>
-              </div>
-            </article>
-
-            {/* Project 6 */}
-            <article className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden card-hover">
-              <div className="h-48 bg-gradient-to-br from-amber-600/20 to-orange-600/20 flex items-center justify-center">
-                <span className="text-4xl">📱</span>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Mobile App</h3>
-                <p className="text-slate-400 text-sm mb-4">
-                  Aplicación móvil multiplataforma para seguimiento de hábitos 
-                  con gamificación y estadísticas.
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="text-xs px-2 py-1 bg-blue-600/20 text-blue-400 rounded">React Native</span>
-                  <span className="text-xs px-2 py-1 bg-green-600/20 text-green-400 rounded">Expo</span>
-                  <span className="text-xs px-2 py-1 bg-purple-600/20 text-purple-400 rounded">Redux</span>
-                </div>
-                <div className="flex gap-4">
-                  <a href="#" className="text-sm text-blue-400 hover:text-blue-300 transition-colors">
-                    Ver Demo →
-                  </a>
-                  <a href="#" className="text-sm text-slate-400 hover:text-white transition-colors">
-                    GitHub →
-                  </a>
-                </div>
-              </div>
-            </article>
-          </div>
+          {projects.length === 0 ? (
+            <p className="rounded-2xl border border-dashed border-slate-700 px-6 py-16 text-center text-slate-400">
+              Todavía no hay proyectos publicados.
+            </p>
+          ) : (
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {projects.map((project, index) => (
+                <article key={project.id} className="card-hover overflow-hidden rounded-2xl border border-slate-800 bg-slate-900">
+                  <Link href={`/proyectos/${project.slug}`} className="block">
+                    <ProjectCover title={project.title} coverUrl={project.coverUrl} tone={index} />
+                  </Link>
+                  <div className="p-5">
+                    <h3 className="text-lg font-semibold">
+                      <Link href={`/proyectos/${project.slug}`} className="hover:text-blue-300">
+                        {project.title}
+                      </Link>
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-400">{project.summary}</p>
+                    {project.tech.length > 0 ? (
+                      <ul className="mt-4 flex flex-wrap gap-2">
+                        {project.tech.map((tag) => (
+                          <li key={tag} className="rounded bg-slate-800 px-2 py-1 text-xs text-slate-300">
+                            {tag}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                    <div className="mt-4 flex gap-4 text-sm">
+                      {project.demoUrl ? (
+                        <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">
+                          Demo
+                        </a>
+                      ) : null}
+                      {project.repoUrl ? (
+                        <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white">
+                          GitHub
+                        </a>
+                      ) : null}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-24 px-6 bg-slate-900/50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">
+      <section id="contact" className="bg-slate-900/50 px-6 py-20">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="mb-3 font-display text-3xl font-bold md:text-4xl">
             <span className="gradient-text">¿Trabajamos juntos?</span>
           </h2>
-          <p className="text-slate-400 mb-10 max-w-2xl mx-auto">
-            ¿Tienes un proyecto en mente? ¿Quieres colaborar? No dudes en contactarme. 
+          <p className="mx-auto mb-8 max-w-2xl text-slate-400">
+            ¿Tienes un proyecto en mente? ¿Quieres colaborar? No dudes en contactarme.
             Siempre estoy abierto a nuevas oportunidades y desafíos.
           </p>
-          
-          <div className="flex flex-wrap justify-center gap-6 mb-12">
-            <a href="mailto:posadasjosep8@gmail.com" className="flex items-center gap-3 px-6 py-4 bg-slate-800 border border-slate-700 rounded-xl hover:border-blue-500 transition-all group">
-              <span className="text-2xl">✉️</span>
-              <div className="text-left">
-                <div className="text-xs text-slate-500">Email</div>
-                <div className="text-sm group-hover:text-blue-400 transition-colors">posadasjosep8@gmail.com</div>
-              </div>
-            </a>
-            
-            <a href="https://github.com/ESPACEX88" target="_blank" className="flex items-center gap-3 px-6 py-4 bg-slate-800 border border-slate-700 rounded-xl hover:border-purple-500 transition-all group">
-              <span className="text-2xl">🐙</span>
-              <div className="text-left">
-                <div className="text-xs text-slate-500">GitHub</div>
-                <div className="text-sm group-hover:text-purple-400 transition-colors">@ESPACEX88</div>
-              </div>
-            </a>
-            
-            <a href="https://linkedin.com/in/josé-posadas" target="_blank" className="flex items-center gap-3 px-6 py-4 bg-slate-800 border border-slate-700 rounded-xl hover:border-blue-600 transition-all group">
-              <span className="text-2xl">💼</span>
-              <div className="text-left">
-                <div className="text-xs text-slate-500">LinkedIn</div>
-                <div className="text-sm group-hover:text-blue-400 transition-colors">/in/José Posadas</div>
-              </div>
-            </a>
+
+          <div className="mb-10 flex flex-wrap justify-center gap-3">
+            <ContactLink href={`mailto:${profile.email}`} label="Email" value={profile.email} icon={<MailIcon />} />
+            <ContactLink href={profile.github} label="GitHub" value={profile.githubHandle} icon={<GitHubIcon />} external />
+            <ContactLink href={profile.linkedin} label="LinkedIn" value={profile.linkedinLabel} icon={<LinkedInIcon />} external />
           </div>
-          
+
           <ContactForm />
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 px-6 border-t border-slate-800">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-slate-500 text-sm">
-            © 2026 José Posadas. Todos los derechos reservados.
-          </p>
-          <div className="flex gap-6">
-            <a href="#" className="text-slate-500 hover:text-white transition-colors">GitHub</a>
-            <a href="#" className="text-slate-500 hover:text-white transition-colors">LinkedIn</a>
-            <a href="#" className="text-slate-500 hover:text-white transition-colors">Twitter</a>
+      <footer className="border-t border-slate-800 px-6 py-8">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 md:flex-row">
+          <p className="text-sm text-slate-500">© {new Date().getFullYear()} {profile.name}</p>
+          <div className="flex gap-5 text-sm">
+            <a href={profile.github} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white">
+              GitHub
+            </a>
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white">
+              LinkedIn
+            </a>
+            <a href={`mailto:${profile.email}`} className="text-slate-500 hover:text-white">
+              Email
+            </a>
+            <Link href="/admin" className="text-slate-600 hover:text-slate-300">
+              Panel
+            </Link>
           </div>
         </div>
       </footer>
     </main>
+  );
+}
+
+function SkillGroup({ title, skills, hover }: { title: string; skills: string[]; hover: string }) {
+  return (
+    <div className="mb-8 last:mb-0">
+      <h3 className="mb-3 text-sm font-semibold tracking-wide text-slate-300 uppercase">{title}</h3>
+      <ul className="flex flex-wrap gap-2">
+        {skills.map((skill) => (
+          <li key={skill} className={`rounded-full border border-slate-700 bg-slate-800 px-3 py-1.5 text-sm ${hover}`}>
+            {skill}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function ContactLink({
+  href,
+  label,
+  value,
+  icon,
+  external = false,
+}: {
+  href: string;
+  label: string;
+  value: string;
+  icon: ReactNode;
+  external?: boolean;
+}) {
+  return (
+    <a
+      href={href}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      className="flex items-center gap-3 rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-left transition-colors hover:border-blue-500"
+    >
+      <span className="text-slate-300">{icon}</span>
+      <span>
+        <span className="block text-xs text-slate-500">{label}</span>
+        <span className="block text-sm">{value}</span>
+      </span>
+    </a>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m4 7 8 6 8-6" />
+    </svg>
+  );
+}
+
+function GitHubIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="size-5" fill="currentColor" aria-hidden="true">
+      <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.1-1.47-1.1-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0 1 12 6.8a9.6 9.6 0 0 1 2.5.34c1.9-1.3 2.74-1.03 2.74-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.86v2.76c0 .26.18.58.69.48A10 10 0 0 0 12 2Z" />
+    </svg>
+  );
+}
+
+function LinkedInIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="size-5" fill="currentColor" aria-hidden="true">
+      <path d="M6.5 9H3.7v11.2h2.8V9ZM5.1 3.8A1.7 1.7 0 1 0 5.12 7.2 1.7 1.7 0 0 0 5.1 3.8ZM20.3 20.2h-2.8v-5.45c0-1.3-.02-2.97-1.81-2.97-1.81 0-2.09 1.41-2.09 2.87v5.55H10.8V9h2.68v1.53h.04c.37-.7 1.28-1.45 2.64-1.45 2.82 0 3.34 1.86 3.34 4.28v6.84Z" />
+    </svg>
   );
 }

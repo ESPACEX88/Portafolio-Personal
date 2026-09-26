@@ -9,6 +9,7 @@
 | TypeScript   | 5.9.x   | Type-safe JavaScript            |
 | Tailwind CSS | 4.x     | Utility-first CSS               |
 | Bun          | Latest  | Package manager & runtime       |
+| Supabase     | JS 2.x  | Auth, Postgres y Storage        |
 
 ## Development Environment
 
@@ -57,9 +58,11 @@ bun typecheck      # Run TypeScript type checking
 
 ```json
 {
-  "next": "^16.1.3", // Framework
-  "react": "^19.2.3", // UI library
-  "react-dom": "^19.2.3" // React DOM
+  "next": "^16.1.3",
+  "react": "^19.2.3",
+  "react-dom": "^19.2.3",
+  "@supabase/supabase-js": "^2.117.2",
+  "@supabase/ssr": "^0.12.7"
 }
 ```
 
@@ -138,6 +141,8 @@ bun typecheck      # Run TypeScript type checking
 
 ### Environment Variables
 
-- None required for base template
-- Add as needed for features
-- Use `.env.local` for local development
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `NEXT_PUBLIC_SITE_URL` opcional, para el enlace mágico
+- Sin estas variables el sitio público usa `src/data/projects.ts`
+- No se usa la service role
