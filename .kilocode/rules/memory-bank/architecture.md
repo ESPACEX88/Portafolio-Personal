@@ -4,16 +4,21 @@
 
 ```
 src/
-├── app/                    # Next.js App Router
-│   ├── layout.tsx          # Root layout + metadata
-│   ├── page.tsx            # Home page
-│   ├── globals.css         # Tailwind imports + global styles
-│   └── favicon.ico         # Site icon
-└── (expand as needed)
-    ├── components/         # React components (add when needed)
-    ├── lib/                # Utilities and helpers (add when needed)
-    └── db/                 # Database files (add via recipe)
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── proyectos/[slug]/page.tsx
+│   ├── admin/login/page.tsx
+│   ├── admin/(panel)/
+│   └── auth/callback/route.ts
+├── components/
+├── data/projects.ts        # Semilla pública si no hay Supabase
+└── lib/                    # Auth, consultas y cliente Supabase
+supabase/migrations/        # Tablas, RLS y bucket project-photos
+src/proxy.ts                # Refresco de sesión
 ```
+
+Los proyectos publicados salen de Postgres. La escritura pasa por la sesión del admin y RLS (`private.is_portfolio_admin`), no por la service role.
 
 ## Key Design Patterns
 

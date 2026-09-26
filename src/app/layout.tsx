@@ -13,8 +13,13 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Mi Portafolio | Desarrollador",
-  description: "Portafolio personal showcasing mis proyectos y habilidades como programador",
+  title: {
+    default: "José Posadas | Desarrollador full stack",
+    template: "%s | José Posadas",
+  },
+  description:
+    "Portafolio de José Posadas, desarrollador full stack. Aplicaciones web, apps móviles y sistemas para el trabajo diario.",
+  authors: [{ name: "José Posadas" }],
 };
 
 export default function RootLayout({
@@ -23,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased bg-slate-950 text-slate-100`}
       >
